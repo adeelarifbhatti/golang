@@ -6,11 +6,12 @@ import (
 )
 
 func execute() {
-	out, err := exec.Command("ls", "-lts").Output()
+	out, err := exec.Command("/bin/bash", "-c" , "ls -l |awk '{print $9}'").Output()
 	if err != nil {
 		fmt.Printf("%s",err)
+		fmt.Println("\nCommand failed")
+
 	}
-	fmt.Println("Command executed successfully")
 	output := string(out[:])
 	fmt.Println(output)
 }
